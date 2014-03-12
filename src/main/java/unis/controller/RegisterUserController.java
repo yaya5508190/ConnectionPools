@@ -9,7 +9,7 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
 
 public final class RegisterUserController extends SimpleFormController{
 
-	private final PropertyEditorRegistrar customPropertyEditorRegistrar;
+/*	private final PropertyEditorRegistrar customPropertyEditorRegistrar;
 
 	public RegisterUserController(PropertyEditorRegistrar propertyEditorRegistrar) {
 		this.customPropertyEditorRegistrar = propertyEditorRegistrar;
@@ -17,7 +17,7 @@ public final class RegisterUserController extends SimpleFormController{
 
 	protected void initBinder(HttpServletRequest request,ServletRequestDataBinder binder) throws Exception {
 		this.customPropertyEditorRegistrar.registerCustomEditors(binder);
-	}
+	}*/
 
 	// other methods to do with registering a User
 }
