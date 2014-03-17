@@ -15,12 +15,14 @@ public class ConnectionTask extends Thread {
 	List<String> keyList;
 	Map<String, ComboPooledDataSource> connectionMap;
 	String nowDb;
-	public ConnectionTask(Map<String, String> map,List<String> keyList,Map<String, ComboPooledDataSource> connectionMap) {
+	String sql;
+	public ConnectionTask(Map<String, String> map,List<String> keyList,Map<String, ComboPooledDataSource> connectionMap,String sql) {
 		super();
 		// TODO Auto-generated constructor stub
 		this.map = map;
 		this.keyList = keyList;
 		this.connectionMap = connectionMap;;
+		this.sql = sql;
 	}
 
 	@Override
@@ -45,25 +47,27 @@ public class ConnectionTask extends Thread {
 				try{
 					ComboPooledDataSource dataSource = connectionMap.get(nowDb);
 					connection = dataSource.getConnection();
-					ps = connection.prepareStatement("select sysdate from dual");
+					ps = connection.prepareStatement(sql);
 					rs = ps.executeQuery();
 					rs.next();
 					map.put(nowDb, rs.getString(1));
-					Thread ConnectionTask = new ConnectionTask(map, keyList, connectionMap);
-					ConnectionTask.start();
+					
 				}catch (Exception e) {
 					// TODO: handle exception
+					e.printStackTrace();
+					System.out.println(nowDb+"error===============================================================================");
 					map.put(nowDb, "error");
 				}finally{
 					try {
 						rs.close();
 						ps.close();
 						connection.close();
-						keyList.remove(nowDb);
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					Thread ConnectionTask = new ConnectionTask(map, keyList, connectionMap, sql);
+					ConnectionTask.start();
 				}
 			}else{
 				return;

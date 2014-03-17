@@ -13,12 +13,12 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 public class ConnectionService {
 	ArrayList<String> list = new ArrayList<String>();
 	
-	public void getInfo(Map<String, String> map,List<String> keyList,Map<String, ComboPooledDataSource> connectionMap){
+	public void getInfo(Map<String, String> map,List<String> keyList,Map<String, ComboPooledDataSource> connectionMap,String sql){
 		
-		Thread ConnectionTask1 = new ConnectionTask(map, keyList, connectionMap);
-		Thread ConnectionTask2 = new ConnectionTask(map, keyList, connectionMap);
-		Thread ConnectionTask3 = new ConnectionTask(map, keyList, connectionMap);
-		Thread ConnectionTask4 = new ConnectionTask(map, keyList, connectionMap);
+		Thread ConnectionTask1 = new ConnectionTask(map, keyList, connectionMap, sql);
+		Thread ConnectionTask2 = new ConnectionTask(map, keyList, connectionMap, sql);
+		Thread ConnectionTask3 = new ConnectionTask(map, keyList, connectionMap, sql);
+		Thread ConnectionTask4 = new ConnectionTask(map, keyList, connectionMap, sql);
 		
 		ConnectionTask1.start();
 		ConnectionTask2.start();

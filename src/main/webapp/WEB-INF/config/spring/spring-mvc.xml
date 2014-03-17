@@ -18,7 +18,7 @@
 	
 	<mvc:default-servlet-handler />
 	
-	<mvc:resources location="/WEB-INF/resources/**" mapping="/html/**"/>
+	<mvc:resources location="/WEB-INF/resources/**" mapping="/resources/**"/>
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -39,5 +39,4 @@
 	<bean id="registerUserController" class="unis.controller.RegisterUserController">
 		<constructor-arg ref="customPropertyEditorRegistrar" />
 	</bean>
-	
 </beans>

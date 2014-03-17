@@ -3,16 +3,10 @@ package unis.modle;
 public class ExoticType {
 	private String name;
 	
-	
-	public String getName() {
-		return name;
+	public ExoticType(String upperCase) {
+		// TODO Auto-generated constructor stub
+		this.name = upperCase;
 	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 
 	@Override
 	public String toString() {
